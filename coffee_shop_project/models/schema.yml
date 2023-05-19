@@ -8,3 +8,10 @@ models:
         tests:
           - unique
           - not_null
+  - name: monthly_customers
+    description: 'aggregated customers per month'
+    columns:
+      - name: signup_month
+        tests:
+          - unique
+          - not_null
