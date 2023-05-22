@@ -2,14 +2,14 @@ version: 2
 
 models:
   - name: customers
-    description: 'cleaned up table of customers'
+    description: '{{ doc("customers") }}'
     columns:
       - name: customer_id
         description: This is a unique identifier of a customer
         tests:
           - unique
           - not_null
-          
+
   - name: monthly_customers
     description: 'aggregated customers per month'
     columns:
