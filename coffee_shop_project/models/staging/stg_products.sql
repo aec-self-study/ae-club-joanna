@@ -6,11 +6,11 @@ renamed as (
     select
         id as product_id,
 
-        name,
-        category,
+        name as product_name,
+        category as product_category,
 
         -- timestamps
-        created_at
+        created_at as product_created_at
     from source
 )
 
