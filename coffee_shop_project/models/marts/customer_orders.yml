@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: customer_orders
+    description: '{{ doc("customer_orders") }}'
+    columns:
+      - name: customer_id
+        description: This is a unique identifier of a customer
+        tests:
+          - unique
+          - not_null
