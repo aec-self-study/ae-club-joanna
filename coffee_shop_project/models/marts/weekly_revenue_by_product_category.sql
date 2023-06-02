@@ -11,7 +11,6 @@ aggregated as (
       sum(price) as revenue_usd
     from order_details
     group by date_week, product_category
-    order by date_week, product_category
 )
 
 select
