@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: weekly_revenue_by_customer_type
+    description: 'revenue aggregated by week and new/returning customer type'
+
+    columns:
+      - name: date_week
+        tests:
+          - not_null
