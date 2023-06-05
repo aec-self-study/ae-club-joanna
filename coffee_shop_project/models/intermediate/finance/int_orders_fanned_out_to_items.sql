@@ -1,25 +1,25 @@
 with orders as (
     select
       *
-    from {{ ref('stg_orders') }}
+    from {{ ref('stg_coffee_shop__orders') }}
 ),
 
 order_items as (
     select
       *
-    from {{ ref('stg_order_items') }}
+    from {{ ref('stg_coffee_shop__order_items') }}
 ),
 
 products as (
     select
       *
-    from {{ ref('stg_products') }}
+    from {{ ref('stg_coffee_shop__products') }}
 ),
 
 product_prices as (
     select
       *
-    from {{ ref('stg_product_prices') }}
+    from {{ ref('stg_coffee_shop__product_prices') }}
 ),
 
 order_details as (
