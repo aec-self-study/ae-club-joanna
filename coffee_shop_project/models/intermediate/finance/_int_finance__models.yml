@@ -1,7 +1,38 @@
 version: 2
 
 models:
-  - name: order_details
+
+  - name: int_customer_order_count
+    description: 'customer data with additional order information'
+
+    columns:
+      - name: customer_id
+        description: "primary key, a unique customer identifier"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: "customer's name"
+        tests:
+          - not_null
+
+      - name: customer_email
+        description: "customer's email"
+        tests:
+          - not_null
+
+      - name: first_order_at
+        description: "timestamp of the first order placed"
+        tests:
+          - not_null
+
+      - name: number_of_orders
+        description: "all orders placed by the customer so far"
+        tests:
+          - not_null
+
+  - name: int_orders_fanned_out_to_items
     description: 'orders split by order item'
 
     columns:
@@ -10,8 +41,3 @@ models:
         tests:
           - unique
           - not_null
-      - name: customer_type
-        description: "the first time a customer orders, they are considered new"
-        tests:
-          - accepted_values:
-              values: ['new', 'returning']
