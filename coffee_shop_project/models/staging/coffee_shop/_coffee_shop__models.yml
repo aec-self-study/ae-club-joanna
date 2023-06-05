@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_customers
+  - name: stg_coffee_shop__customers
     description: 'staging table, contains one row per customer'
 
     columns:
@@ -21,7 +21,7 @@ models:
         tests:
           - not_null
 
-  - name: stg_order_items
+  - name: stg_coffee_shop__order_items
     description: "staging table, contains one row per order item"
 
     columns:
@@ -41,7 +41,7 @@ models:
         tests:
           - not_null
 
-  - name: stg_orders
+  - name: stg_coffee_shop__orders
     description: "staging table, contains one row per order"
 
     columns:
@@ -81,7 +81,7 @@ models:
         tests:
           - not_null
 
-  - name: stg_product_prices
+  - name: stg_coffee_shop__product_prices
     description: "staging table, contains one row per pricing period per product"
 
     columns:
@@ -111,7 +111,7 @@ models:
         tests:
           - not_null
 
-  - name: stg_products
+  - name: stg_coffee_shop__products
     description: "staging table, contains one row per product"
 
     columns:
