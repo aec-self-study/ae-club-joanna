@@ -1,8 +1,9 @@
 version: 2
 
 models:
-  - name: customer_orders
-    description: '{{ doc("customer_orders") }}'
+
+  - name: int_customer_order_count
+    description: 'customer data with additional order information'
 
     columns:
       - name: customer_id
@@ -29,4 +30,14 @@ models:
       - name: number_of_orders
         description: "all orders placed by the customer so far"
         tests:
+          - not_null
+
+  - name: int_orders_fanned_out_to_items
+    description: 'orders split by order item'
+
+    columns:
+      - name: order_item_id
+        description: "primary key, a unique order item identifier"
+        tests:
+          - unique
           - not_null

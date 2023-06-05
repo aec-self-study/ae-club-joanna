@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: new_monthly_customers
+  - name: monthly_new_customers
     description: 'customers who ordered for the first time, aggregated per month'
 
     columns:
@@ -11,5 +11,13 @@ models:
           - not_null
 
       - name: new_customers
+        tests:
+          - not_null
+
+  - name: weekly_revenue
+    description: 'weekly revenue per product category and new/returning customer type'
+
+    columns:
+      - name: date_week
         tests:
           - not_null
