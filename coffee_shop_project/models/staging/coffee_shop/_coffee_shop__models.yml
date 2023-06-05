@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_coffee_shop__customers
-    description: 'staging table, contains one row per customer'
+    description: '{{ doc("_coffee_shop__docs") }}'
 
     columns:
       - name: customer_id
