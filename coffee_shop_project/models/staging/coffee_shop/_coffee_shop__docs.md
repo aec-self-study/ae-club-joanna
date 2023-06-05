@@ -1,4 +1,4 @@
-{% docs stg_coffee_shop__customers %}
+{% docs stg_coffee_shop__customers_doc %}
 
 This is a table with 1 row per customer.
 

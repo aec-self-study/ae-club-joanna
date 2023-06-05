@@ -2,11 +2,11 @@ version: 2
 
 models:
   - name: stg_coffee_shop__customers
-    description: '{{ doc("_coffee_shop__docs") }}'
+    description: '{{ doc("stg_coffee_shop__customers_doc") }}'
 
     columns:
       - name: customer_id
-        description: "primary key of the model -- an unique customer id"
+        description: "primary key of the model -- a unique customer id"
         tests:
           - unique
           - not_null
@@ -26,7 +26,7 @@ models:
 
     columns:
       - name: order_item_id
-        description: "primary key, an unique order item id"
+        description: "primary key, a unique order item id"
         tests:
           - unique
           - not_null
@@ -46,7 +46,7 @@ models:
 
     columns:
       - name: order_id
-        description: "primary key, an unique order id"
+        description: "primary key, a unique order id"
         tests:
           - unique
           - not_null
@@ -86,7 +86,7 @@ models:
 
     columns:
       - name: product_price_id
-        description: "primary key, an unique product price id"
+        description: "primary key, a unique product price id"
         tests:
           - unique
           - not_null
@@ -116,7 +116,7 @@ models:
 
     columns:
       - name: product_id
-        description: "primary key, an unique order id"
+        description: "primary key, a unique order id"
         tests:
           - unique
           - not_null
