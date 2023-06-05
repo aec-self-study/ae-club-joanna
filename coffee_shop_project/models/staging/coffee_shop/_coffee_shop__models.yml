@@ -1,0 +1,137 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: 'staging table, contains one row per customer'
+
+    columns:
+      - name: customer_id
+        description: "primary key of the model -- an unique customer id"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: "customer's name"
+        tests:
+          - not_null
+
+      - name: customer_email
+        description: "customer's email"
+        tests:
+          - not_null
+
+  - name: stg_order_items
+    description: "staging table, contains one row per order item"
+
+    columns:
+      - name: order_item_id
+        description: "primary key, an unique order item id"
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: "foreign key, order id the order item belongs to"
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "foreign key, product id of the order item"
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "staging table, contains one row per order"
+
+    columns:
+      - name: order_id
+        description: "primary key, an unique order id"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "foreign key, customer id associated with the order"
+        tests:
+          - not_null
+
+      - name: order_total
+        description: "total price of the order"
+        tests:
+          - not_null
+
+      - name: order_address
+        description: "customer's address for the given order"
+        tests:
+          - not_null
+
+      - name: order_state
+        description: "the state associated with the order"
+        tests:
+          - not_null
+
+      - name: order_zip
+        description: "the zip code associated with the order"
+        tests:
+          - not_null
+
+      - name: order_created_at
+        description: "order creation timestamp"
+        tests:
+          - not_null
+
+  - name: stg_product_prices
+    description: "staging table, contains one row per pricing period per product"
+
+    columns:
+      - name: product_price_id
+        description: "primary key, an unique product price id"
+        tests:
+          - unique
+          - not_null
+
+      - name: product_id
+        description: "foreign key, product id of the product the price is associated with"
+        tests:
+          - not_null
+
+      - name: price
+        description: "price of the product at the given point"
+        tests:
+          - not_null
+
+      - name: price_valid_from
+        description: "timestamp marking the date when the product price was valid from"
+        tests:
+          - not_null
+
+      - name: price_valid_to
+        description: "timestamp marking the date when the product price expired"
+        tests:
+          - not_null
+
+  - name: stg_products
+    description: "staging table, contains one row per product"
+
+    columns:
+      - name: product_id
+        description: "primary key, an unique order id"
+        tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: "name of the product"
+        tests:
+          - not_null
+
+      - name: product_category
+        description: "product category"
+        tests:
+          - not_null
+
+      - name: product_created_at
+        description: "product creation timestamp"
+        tests:
+          - not_null
