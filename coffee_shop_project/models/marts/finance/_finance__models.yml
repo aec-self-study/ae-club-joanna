@@ -14,16 +14,8 @@ models:
         tests:
           - not_null
 
-  - name: weekly_revenue_by_customer_type
-    description: 'revenue aggregated by week and new/returning customer type'
-
-    columns:
-      - name: date_week
-        tests:
-          - not_null
-
-  - name: weekly_revenue_by_product_category
-    description: 'revenue aggregated by week per category'
+  - name: weekly_revenue
+    description: 'weekly revenue per product category and new/returning customer type'
 
     columns:
       - name: date_week
