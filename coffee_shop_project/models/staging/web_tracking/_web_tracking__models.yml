@@ -17,7 +17,7 @@ models:
           - not_null     
 
       - name: customer_id
-        description: "the ID of the customer, null values excluded"   
+        description: "the ID of the customer, if existing"   
 
       - name: device_type
         description: "Device type used by the visitor"
@@ -26,7 +26,7 @@ models:
               values: ['linux', 'macOS', 'iPhone', 'Android', 'windows']
 
       - name: page_name
-        description: "the page that was visited"
+        description: "the page that was visited, can be empty"
         tests:
           - not_null
 
