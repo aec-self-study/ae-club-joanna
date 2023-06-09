@@ -26,4 +26,13 @@ models:
           - unique
           - not_null
 
+  - name: int_web_sessions
+    description: one record per page view, data enhanced by session info
+
+    columns:
+      - name: page_view_id
+        description: primary key, a unique event identifier
+        tests:
+          - unique
+          - not_null
 
