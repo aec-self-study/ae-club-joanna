@@ -1,0 +1,29 @@
+version: 2
+
+models:
+
+  - name: int_visitors
+    description: one record per visitor_id with their eventual customer_id
+    columns:
+      - name: visitor_id
+        tests:
+          - unique
+          - not_null
+      - name: first_customer_id
+        description: >
+          If the visitor hasn't purchased yet there will be no customer_id.
+
+          If a customer visited from multiple devices, their id will be 
+          duplicated.
+
+  - name: int_page_views_stitched
+    description: one record per page view with the stitched visitor id
+
+    columns:
+      - name: page_view_id
+        description: primary key, a unique event identifier
+        tests:
+          - unique
+          - not_null
+
+
