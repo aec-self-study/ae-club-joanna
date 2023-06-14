@@ -8,12 +8,18 @@ visitors as (
 
 joined as (
     select
-        page_views.*,
-        -- Take customer id if avaliable, else visitor id
+        page_views.page_view_id,
+        -- Replace all following visitor ids with the first one
+        visitors.first_visitor_id as visitor_id,
+        page_views.customer_id,
+        page_views.page_name,
+        page_views.device_type,
+        -- Take customer id if avaliable, else first visitor id
         coalesce(
             visitors.first_customer_id, 
-            page_views.visitor_id
-        ) as stitched_visitor_id
+            visitors.first_visitor_id
+        ) as stitched_visitor_id,
+        page_views.page_view_created_at
     from page_views
     left join visitors
         on page_views.visitor_id = visitors.visitor_id
