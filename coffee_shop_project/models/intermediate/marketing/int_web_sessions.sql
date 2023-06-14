@@ -41,15 +41,16 @@ with_session_number as (
 with_session_end as (
     select
         *,
-        min(page_view_created_at) over (
-            partition by stitched_visitor_id
-            order by session_number
+        first_value(page_view_created_at) over (
+            partition by stitched_visitor_id, session_number
+            order by page_view_created_at
+            rows between unbounded preceding and current row
         ) as session_start_at,
-        max(page_view_created_at) over (
-            partition by stitched_visitor_id
-            order by session_number
+        last_value(page_view_created_at) over (
+            partition by stitched_visitor_id, session_number
+            order by page_view_created_at
+            rows between unbounded preceding and unbounded following
         ) as session_end_at
-
     from with_session_number
 ),
 
@@ -64,7 +65,10 @@ final as (
         device_type,
         page_view_created_at,
         session_start_at,
-        session_end_at
+        session_end_at,
+        timestamp_diff(
+                        session_end_at, session_start_at, second
+                      )/ 60 as session_duration_minutes
     from with_session_end
 )
 
