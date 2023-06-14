@@ -36,3 +36,21 @@ models:
           - unique
           - not_null
 
+  - name: int_visitor_sessions_metadata
+    description: one record per visitor and session number
+
+    columns:
+      - name: stitched_visitor_id
+        tests:
+          - not_null
+      - name: session_number
+        tests:
+          - not_null
+      - name: session_date
+        tests:
+          - not_null
+      - name: ended_in_purchase
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+              quote: false
