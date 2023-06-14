@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_web_tracking__page_views
+    description: "staging table, contains one row per page view"
+
+    columns:
+      - name: page_view_id
+        description: "primary key of the model - a unique page view id"
+        tests:
+          - unique
+          - not_null
+
+      - name: visitor_id
+        description: " ID of the visitor, it can change per customer depending on the device used"
+        tests:
+          - not_null     
+
+      - name: customer_id
+        description: "the ID of the customer, if existing"   
+
+      - name: device_type
+        description: "Device type used by the visitor"
+        tests:
+          - accepted_values:
+              values: ['linux', 'macOS', 'iPhone', 'Android', 'windows']
+
+      - name: page_name
+        description: "the page that was visited, can be empty"
+        tests:
+          - not_null
+
+      - name: page_view_created_at
+        description: tTime the page view happened"
+        tests:
+          - not_null
+        
+
+
