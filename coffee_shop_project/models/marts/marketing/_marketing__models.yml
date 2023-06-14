@@ -1,0 +1,13 @@
+version: 2
+
+models:
+
+  - name: daily_visitor_sessions
+    description: >
+      one record per date, includes various session and purchase 
+      information
+    columns:
+      - name: session_date
+        tests:
+          - unique
+          - not_null
