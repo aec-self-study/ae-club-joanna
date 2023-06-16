@@ -1,8 +1,8 @@
 with weeks as (
     {{ dbt_utils.date_spine(
         datepart="week",
-        start_date="'2020-12-28'",
-        end_date="'2021-12-27'"
+        start_date="'2020-12-27'",
+        end_date="'2021-12-26'"
     ) }}
 )
 
