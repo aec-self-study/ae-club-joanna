@@ -24,7 +24,11 @@ models:
 
 
   - name: weekly_revenue_by_first_order_week
-    description: 'one row per customer per week with their revenue and cumulative revenue'
+    description: >
+          One row per customer per week.
+          Weeks are counted starting with the first order week.
+
+          Customer revenue is aggregated by week.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -38,3 +42,22 @@ models:
         tests:
           - dbt_utils.expression_is_true:
               expression: "> 0"
+
+  - name: weekly_revenue_by_order_device
+    description: >
+          One row per customer per week per order device.
+
+          Weeks are counted for each device separately, 
+          starting with the first order week by device.
+          
+          If a customer purchased using multiple devices
+          in the given week, the revenue will be assigend to
+          different devices.
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - customer_id
+            - device_type
+            - date_week
+            - week_number
