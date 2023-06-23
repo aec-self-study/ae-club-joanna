@@ -49,12 +49,12 @@ all_weeks_revenue as (
         customer_weeks.first_order_week,
         customer_weeks.date_week,
         customer_weeks.week_number,
-        coalesce(weekly_orders.revenue, 0) as total_revenue,
+        coalesce(weekly_orders.revenue, 0) as weekly_revenue,
         sum(weekly_orders.revenue) over (
             partition by customer_weeks.customer_id
             order by customer_weeks.date_week
             rows between unbounded preceding and current row
-        ) as total_cumulative_revenue
+        ) as cumulative_revenue
     from customer_weeks
     left join weekly_orders 
         on customer_weeks.customer_id = weekly_orders.customer_id
