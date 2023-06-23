@@ -23,7 +23,7 @@ models:
           - not_null
 
 
-  - name: weekly_customer_revenue
+  - name: weekly_revenue_by_first_order_week
     description: 'one row per customer per week with their revenue and cumulative revenue'
 
     tests:
@@ -34,7 +34,7 @@ models:
             - week_number
 
     columns:
-      - name: total_cumulative_revenue
+      - name: cumulative_revenue
         tests:
           - dbt_utils.expression_is_true:
               expression: "> 0"
