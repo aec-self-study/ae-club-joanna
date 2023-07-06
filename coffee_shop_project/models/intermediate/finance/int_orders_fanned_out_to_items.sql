@@ -26,6 +26,7 @@ order_details as (
     select
       order_items.order_item_id,
       orders.order_id,
+      orders.order_created_at,
       products.product_name,
       products.product_category,
       product_prices.price
