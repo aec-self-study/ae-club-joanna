@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_form_events__respondents
+    description: "staging table, contains one row per github username"
+
+    columns:
+      - name: github_username
+        tests:
+          - unique
+          - not_null
