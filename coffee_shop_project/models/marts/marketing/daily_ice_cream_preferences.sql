@@ -16,11 +16,10 @@ daily_preferences as (
 ),
 
 daily_counts as (
-
     select 
         date_days.date_day,
         daily_preferences.favorite_ice_cream_flavor,
-        count(distinct daily_preferences.github_username) as flavor_count
+        count(distinct daily_preferences.github_username) as survey_answer_count
     from date_days
     left join daily_preferences 
         on date_day between date(dbt_valid_from) and ifnull(date(dbt_valid_to), date("2099-12-31"))
@@ -32,7 +31,7 @@ daily_ranks as (
     -- Sort the flavors by popularity
     select
         *,
-        row_number() over (partition by date_day order by flavor_count desc) as flavor_rank
+        row_number() over (partition by date_day order by survey_answer_count desc) as flavor_rank
     from daily_counts
 )
 
