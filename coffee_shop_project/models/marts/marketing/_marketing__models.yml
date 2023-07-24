@@ -11,3 +11,16 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: daily_ice_cream_preferences
+    description: one record per date and ice cream flavor 
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - favorite_ice_cream_flavor
